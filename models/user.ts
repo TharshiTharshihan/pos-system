@@ -1,6 +1,8 @@
 import mongoose, { Schema, models, model } from "mongoose";
 
 export interface IUser {
+  name: string;
+  role: string;
   email: string;
   password: string;
 }
@@ -8,6 +10,7 @@ export interface IUser {
 const userSchema = new Schema<IUser>(
   {
     name:{type:String,required:true},
+    role: { type: String, required: true, default: "user" },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
   },

@@ -71,6 +71,7 @@ export default function Navigation({
                   ? "text-cyan-400"
                   : "text-white hover:text-orange-400"
               }`}
+              suppressHydrationWarning
             >
               {link.label}
               {activeSection === link.id && (
@@ -86,24 +87,16 @@ export default function Navigation({
           ))}
         </div>
 
-        {/* Search Icon */}
+        {/* Login */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://www.google.com/search"
-            target="_blank"
-            rel="noopener"
-            className="text-white hover:scale-110 transition-transform"
+            href="/login"
+            className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md"
           >
-            <svg
-              className="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
+            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+            <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+              <span className="relative text-white"> Login</span>
+            </span>
           </a>
         </div>
 
@@ -111,6 +104,7 @@ export default function Navigation({
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden flex flex-col gap-1.5 cursor-pointer z-50"
+          suppressHydrationWarning
         >
           <span
             className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
@@ -131,15 +125,28 @@ export default function Navigation({
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className={`px-6 py-4 text-left border-l-4 transition-all ${
+              className={`px-6 py-4 text-center border-l-4 transition-all ${
                 activeSection === link.id
                   ? "border-cyan-400 bg-cyan-400/10 text-cyan-400"
                   : "border-transparent text-white hover:border-orange-500 hover:bg-orange-500/10"
               }`}
+              suppressHydrationWarning
             >
               {link.label}
             </button>
           ))}
+          <div className="px-6 py-4 border-t border-white/10 text-center">
+            <a
+            href="/login"
+            className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md"
+          >
+            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+            <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
+              <span className="relative text-white"> Login</span>
+            </span>
+          </a>
+          </div>
+           
         </div>
       )}
     </nav>

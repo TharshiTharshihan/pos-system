@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 export default function Hero({ scrollToSection }) {
   return (
@@ -109,8 +110,10 @@ export default function Hero({ scrollToSection }) {
               background: "linear-gradient(135deg, #ff6b6b, #ff8e53)",
               boxShadow: "0 4px 15px rgba(255, 107, 107, 0.3)",
             }}
+            suppressHydrationWarning
           >
-            Get Started
+            {" "}
+            <Link href="/register"> Get Started</Link>
           </button>
         </div>
 

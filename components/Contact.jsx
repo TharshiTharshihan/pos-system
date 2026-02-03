@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 export default function Contact({ handleFormSubmit }) {
   return (
@@ -26,6 +27,7 @@ export default function Contact({ handleFormSubmit }) {
                   required
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#00ffcc80] focus:bg-[#ffffff14] transition-all"
                   placeholder="Your name"
+                  suppressHydrationWarning
                 />
               </div>
               <div>
@@ -37,6 +39,7 @@ export default function Contact({ handleFormSubmit }) {
                   required
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#00ffcc80] focus:bg-[#ffffff14] transition-all"
                   placeholder="your@email.com"
+                  suppressHydrationWarning
                 />
               </div>
               <div>
@@ -48,6 +51,7 @@ export default function Contact({ handleFormSubmit }) {
                   required
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#00ffcc80] focus:bg-[#ffffff14] transition-all"
                   placeholder="Subject"
+                  suppressHydrationWarning
                 />
               </div>
               <div>
@@ -59,6 +63,7 @@ export default function Contact({ handleFormSubmit }) {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#00ffcc80] focus:bg-[#ffffff14] transition-all resize-none"
                   rows="5"
                   placeholder="Tell us how we can help you..."
+                  suppressHydrationWarning
                 ></textarea>
               </div>
               <button
@@ -68,6 +73,7 @@ export default function Contact({ handleFormSubmit }) {
                   background: "linear-gradient(135deg, #ff6b6b, #ff8e53)",
                   boxShadow: "0 4px 15px rgba(255, 107, 107, 0.3)",
                 }}
+                suppressHydrationWarning
               >
                 Send Message
               </button>
@@ -82,19 +88,19 @@ export default function Contact({ handleFormSubmit }) {
 
             {[
               {
-                icon: "📧",
+                icon: <FaEnvelope className="text-3xl text-cyan-400" />,
                 title: "Email Address",
                 lines: ["hello@graphpage.com", "support@graphpage.com"],
                 href: "mailto:hello@graphpage.com",
               },
               {
-                icon: "📞",
+                icon: <FaPhone className="text-3xl text-cyan-400" />,
                 title: "Phone Number",
                 lines: ["+1 (555) 123-4567", "Available 24/7"],
                 href: "tel:+15551234567",
               },
               {
-                icon: "📍",
+                icon: <FaMapMarkerAlt className="text-3xl text-cyan-400" />,
                 title: "Office Location",
                 lines: [
                   "123 Data Drive, Suite 100",
@@ -103,7 +109,7 @@ export default function Contact({ handleFormSubmit }) {
                 href: "https://maps.google.com/?q=123+Data+Drive+Suite+100+Analytics+City",
               },
               {
-                icon: "🕒",
+                icon: <FaClock className="text-3xl text-cyan-400" />,
                 title: "Business Hours",
                 lines: [
                   "Monday - Friday: 9:00 AM - 6:00 PM",
@@ -121,7 +127,7 @@ export default function Contact({ handleFormSubmit }) {
                 }`}
                 onClick={() => item.href && window.open(item.href)}
               >
-                <div className="text-3xl flex-shrink-0">{item.icon}</div>
+                <div className="flex-shrink-0">{item.icon}</div>
                 <div>
                   <h4 className="font-semibold text-white mb-1">
                     {item.title}

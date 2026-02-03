@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { FaChartLine, FaChartBar } from "react-icons/fa";
 
 const metrics = [
   { value: "2.4M", label: "Page Views" },
@@ -69,7 +70,9 @@ export default function Analytics() {
           {/* Monthly Trends */}
           <div className="bg-white/3 border border-white/10 rounded-3xl p-6 hover:bg-white/5 transition-all relative z-10">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4 md:gap-0">
-              <h3 className="text-xl font-semibold">📈 Monthly Trends</h3>
+              <h3 className="text-xl font-semibold flex items-center gap-2">
+                <FaChartLine className="text-cyan-400" /> Monthly Trends
+              </h3>
               <div className="flex gap-2">
                 {["2024", "2023", "2022"].map((year, i) => (
                   <span
@@ -120,7 +123,9 @@ export default function Analytics() {
           {/* Growth Analytics */}
           <div className="bg-white/3 border border-white/10 rounded-3xl p-6 hover:bg-white/5 transition-all relative z-10">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4 md:gap-0">
-              <h3 className="text-xl font-semibold">📊 Growth Analytics</h3>
+              <h3 className="text-xl font-semibold flex items-center gap-2">
+                <FaChartBar className="text-cyan-400" /> Growth Analytics
+              </h3>
               <div className="flex gap-2">
                 {["Week", "Month", "Year"].map((period, i) => (
                   <span

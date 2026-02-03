@@ -1,5 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
+import { TbTargetArrow } from "react-icons/tb";
+import { BiSolidChart } from "react-icons/bi";
+import { FaUsers } from "react-icons/fa";
+import { MdShowChart } from "react-icons/md";
+import { BiMoney } from "react-icons/bi";
+import { TbBolt } from "react-icons/tb";
 
 export default function Dashboard() {
   useEffect(() => {
@@ -66,7 +72,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {[
             {
-              icon: "📊",
+              icon: <BiSolidChart className="text-[#9c0dd0]" />,
               title: "Total Revenue",
               value: "$42,847",
               desc: "Monthly revenue increased by 23% compared to last month with strong performance across all channels.",
@@ -74,7 +80,7 @@ export default function Dashboard() {
               color: "#00ffcc",
             },
             {
-              icon: "👥",
+              icon: <FaUsers className="text-[#000000]" />,
               title: "Active Users",
               value: "18.5K",
               desc: "Real-time analytics showing active users currently engaging with the platform.",
@@ -82,7 +88,7 @@ export default function Dashboard() {
               color: "#ff0080",
             },
             {
-              icon: "🎯",
+              icon: <TbTargetArrow className="text-[#ff0080]" />,
               title: "Conversion Rate",
               value: "94.3%",
               desc: "Customer satisfaction rate based on recent surveys and feedback analysis.",
@@ -90,7 +96,7 @@ export default function Dashboard() {
               color: "#00ccff",
             },
             {
-              icon: "🚀",
+              icon: <MdShowChart className="text-[#ff461d]" />,
               title: "Performance Score",
               value: "7,392",
               desc: "Overall system performance metrics showing optimal operation across all services.",
@@ -98,7 +104,7 @@ export default function Dashboard() {
               color: "#ffcc00",
             },
             {
-              icon: "💰",
+              icon: <BiMoney className="text-[#eef077]" />,
               title: "Monthly Growth",
               value: "+28.5%",
               desc: "Consistent month-over-month growth in user acquisition and revenue generation.",
@@ -106,7 +112,7 @@ export default function Dashboard() {
               color: "#ff6b6b",
             },
             {
-              icon: "⚡",
+              icon: <TbBolt className="text-[#d240f0]" />,
               title: "System Uptime",
               value: "99.9%",
               desc: "Exceptional reliability with minimal downtime ensuring seamless user experience.",
@@ -122,7 +128,7 @@ export default function Dashboard() {
 
               <div className="flex items-center gap-3 mb-4">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-2xl"
                   style={{
                     background: "linear-gradient(135deg, #00ffcc, #00ccff)",
                   }}
