@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter ,Montserrat, Urbanist} from "next/font/google";
+import { DM_Sans, Inter, Montserrat, Urbanist } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
-
+import { Providers } from "@/redux/Providers";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -15,7 +15,6 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
- 
 
 export const metadata: Metadata = {
   title: "PoS System",
@@ -33,8 +32,10 @@ export default function RootLayout({
         className={`${dmSans.variable}   
    ${inter.variable} font-sans antialiased`}
       >
-        {children}
-        <Footer />
+        <Providers>
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

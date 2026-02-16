@@ -6,6 +6,8 @@ import Link from "next/link";
 import { FiEye, FiEyeOff, FiArrowRight, FiLogIn } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { loggedIn } from "../../redux/userSlice";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -17,6 +19,8 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   /* ---------- Handle Input Change ---------- */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,18 +59,36 @@ export default function LoginPage() {
         throw new Error(data.error || "Login failed");
       }
 
-      // Show success toast
-      toast.success("Login successful!...", {
-        position: "top-right",
-        autoClose: 2000,
-      });
+      //redux
+      const data = await res.json();
+      dispatch(loggedIn(data));
 
-      // Redirect immediately after successful login to avoid hydration mismatch caused by setTimeout delay
-      console.log("Login successful! Redirecting...");
+      //role based redirection
 
-      setTimeout(() => {
-        window.location.href = "/dashboard";
-      }, 1000);
+      if (data.role === "admin") {
+        toast.success("Login successful!...", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+
+        console.log("Login successful! Redirecting...");
+
+        setTimeout(() => {
+          window.location.href = "/adminDash";
+        }, 1000);
+      } else {
+         toast.success("Login successful!...", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+
+        console.log("Login successful! Redirecting...");
+
+        setTimeout(() => {
+          window.location.href = "/dashboard";
+        }, 1000);
+      }
+
     } catch (err: unknown) {
       const errorMessage =
         err instanceof Error ? err.message : "An unknown error occurred";
@@ -178,7 +200,7 @@ export default function LoginPage() {
 
               {/* Register Link */}
               <p className="text-center text-slate-400 text-sm mt-6">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                   href="/register"
                   className="text-orange-400 hover:text-orange-300 font-semibold transition"
