@@ -10,8 +10,8 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
-  // Protect dashboard
-  if (pathname.startsWith("/dashboard")) {
+  // Protect dashboard and adminDash
+  if (pathname.startsWith("/dashboard") || pathname.startsWith("/adminDash")) {
     if (!token) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
@@ -21,5 +21,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/dashboard/:path*"],
+  matcher: ["/login", "/dashboard/:path*", "/adminDash/:path*"],
 };
